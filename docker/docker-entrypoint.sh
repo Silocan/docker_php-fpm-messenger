@@ -26,10 +26,4 @@ set_conf "PHP__" "$PHP_INI_DIR/conf.d/40-user.ini" "="
 
 chmod 777 -Rf /var/www
 
-$PARAM_VERBOSE=''
-if [[ $VERBOSE -eq 1 ]]; then
-    PARAM_VERBOSE='-vv'
-fi
-
-sleep 10
-/var/www/bin/console messenger:consume-messages $PARAM_VERBOSE $RECEIVER_NAME >&1
+/var/www/bin/console messenger:consume $COMMAND_OPTIONS $RECEIVER_NAME >&1
